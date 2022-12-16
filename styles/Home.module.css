@@ -22,3 +22,13 @@
   align-items: center;
   text-align: center;
 }
+.tuile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.flag {
+  height: 10vh;
+}

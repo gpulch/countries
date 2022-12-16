@@ -7,18 +7,37 @@ import BodyComponent from "./components/BodyComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
+/**
+ * ICountry interface
+ * @interface ICountry
+ * @TODO : revoir native name , currency et language
+ */
+
 export interface ICountry {
-  name: {
-    common: string;
-  };
-  capital: string;
-  region: string;
   flags: {
     svg: string;
     png: string;
   };
+  name: {
+    common: string;
+    nativeName: {
+      ara: { common: string }; // native name in arabic  ???????
+    };
+  };
   population: number;
+  region: string;
+  subregion: string;
+  capital: string;
+  topLevelDomain: string[];
+  currencies: {
+    AED: { name: string; symbol: string }; // CURRENCY ???????
+  };
+  languages: {
+    ara: string; // language ???????
+  };
+  bordercountries: string[];
 }
+
 
 export default function Home() {
   // fetching data from the api

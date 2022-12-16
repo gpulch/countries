@@ -2,6 +2,7 @@ import React from "react";
 import { ICountries } from "./BodyComponent";
 import { ICountry } from "../";
 import CountryComponent from "./CountryComponent";
+import styles from "../styles/Home.module.css";
 
 function TuilesPays({ countries }: ICountries) {
 console.log(countries)

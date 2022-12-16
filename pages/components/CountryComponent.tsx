@@ -1,5 +1,6 @@
 import React from "react";
 import { ICountry } from "../";
+import styles from "../../styles/Home.module.css";
 
 export interface CountryProps {
   country: ICountry;
@@ -7,11 +8,12 @@ export interface CountryProps {
 
 export default function CountryComponent({ country }: CountryProps) {
   return (
-    <div className="bg-white shadow-md rounded-md p-4">
+    <div className={styles.tuile}>
+    {/* <div className="bg-white tuile shadow-md rounded-md p-4"> */}
       <div className="flex items-center space-x-4">
         <div className="flex-shrink-0">
           <img
-            className="h-12 w-12 rounded-full"
+            className="h-12 w-12 rounded-full " className={styles.flag}
             src={country.flags.svg}
             alt=""
           />
