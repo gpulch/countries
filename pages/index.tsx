@@ -24,7 +24,7 @@ export interface ICountry {
       ara: { common: string }; // native name in arabic  ???????
     };
   };
-  population: number;
+  population: string;
   region: string;
   subregion: string;
   capital: string;
@@ -35,9 +35,8 @@ export interface ICountry {
   languages: {
     ara: string; // language ???????
   };
-  bordercountries: string[];
+  borders: string[];
 }
-
 
 export default function Home() {
   // fetching data from the api
@@ -45,10 +44,14 @@ export default function Home() {
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
-      // fetch("https://restcountries.com/v2/all?fields=flag,name,region,capital")
       .then((res) => res.json())
       .then((data) => {
-        setCountries(data);
+        const fixedPopulation = data.map((country: ICountry) => {
+          country.population = country.population
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ","); // add commas to the population
+          setCountries(data);
+        });
       })
       .catch((err) => console.log(err));
   }, []);
