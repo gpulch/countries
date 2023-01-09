@@ -32,5 +32,9 @@ a {
 }
 
 .flex-shrink-0 {
-  
+  /* background-color: aqua */
+}
+
+.searchBar {
+  height : 50px;
 }

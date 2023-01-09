@@ -1,10 +1,14 @@
 import React from "react";
-import { ICountries } from "./BodyComponent";
+import { BodyComponentProps } from "./BodyComponent";
 import { ICountry } from "../";
 import CountryComponent from "./CountryComponent";
 import styles from "../styles/Home.module.css";
 
-function TuilesPays({ countries }: ICountries) {
+interface TuilesPaysProps {
+    countries: ICountry[];
+}
+
+function TuilesPays({ countries }: TuilesPaysProps) {
 console.log(countries)
   return (
     // <div>Toto</div>

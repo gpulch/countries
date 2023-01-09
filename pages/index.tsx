@@ -56,6 +56,14 @@ export default function Home() {
       .catch((err) => console.log(err));
   }, []);
 
+  const onSearch = (query: string) => {
+    const queryLowerCase = query.toLowerCase();
+    const result = countries.filter((element) =>
+      element.name.common.toLowerCase().includes(queryLowerCase)
+    );
+    setCountries(result);
+  };
+
   return (
     <>
       <Head>
@@ -64,7 +72,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BodyComponent countries={countries} />
+      <BodyComponent countries={countries} onSearch={onSearch} />
     </>
   );
 }

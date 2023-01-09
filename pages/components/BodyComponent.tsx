@@ -4,16 +4,19 @@ import SearchBar from "./SearchBar";
 import TuilesPays from "./TuilesPays";
 import { ICountry } from "../";
 
-export interface ICountries {
+export interface BodyComponentProps {
     countries: ICountry[];
+    onSearch: (query: string) => void;
 }
 
-const BodyComponent = ({countries}: ICountries) => {
+const BodyComponent = ({countries, onSearch}: BodyComponentProps) => {
 
   return (
     <React.Fragment>
       <Header />
-      <SearchBar />
+      <SearchBar onSearch={onSearch}/>
+      {/* {countries.length === 0 ? (<p>Aucun pays ne correspond à votre recherche</p>)
+      : ()} */}
       <TuilesPays countries={countries} />
     </React.Fragment>
   );
