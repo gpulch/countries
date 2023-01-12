@@ -17,7 +17,8 @@ export interface RegionToggleProps {
       <select
         value={selectedRegion}
         onChange={(e) => setSelectedRegion(e.target.value)}
-      >
+        className={styles.toggle}
+     >
         {regions.map((region) => (
           <option key={region} value={region} >
             {region}

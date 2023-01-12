@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NextPage } from "next";
 import { ICountry } from "./index";
-import styles from "../styles/Home.module.css";
+import styles from ".//../styles/Home.module.css";
 
 interface CountryProps {
   country: ICountry;

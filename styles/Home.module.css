@@ -2,37 +2,59 @@
   padding: 2vh 2vw;
   width: 100vw;
   justify-content: space-between;
-  background-color: red;
-  display: flex; 
+  background-color: rgb(43, 42, 42);
+  display: flex;
+  font-size: 16px;
+  font-family: sans-serif;
 }
 .headerTitle {
   text-align: left;
-  background-color: blue;
 }
 .headerDarkMode {
   justify-content: right;
-  background-color: green;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .searchBar {
-  background-color: yellow;
+  background-color: rgb(79, 79, 77);
   height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 30px;
+  width: 400px;
 }
 .tuile {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: 30px;
+  background-color: rgb(44, 44, 44);
+  padding-inline: 20px;
+  padding-bottom: 20px;
+  font-family: sans-serif;
 }
 
 .flag {
   height: 10vh;
+  width: 100%;
 }
 
 .searchBar {
-  height : 50px;
+  height: 50px;
+}
+
+.toggle {
+  margin-left: 30px;
+  width: 200px;
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
