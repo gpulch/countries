@@ -11,13 +11,13 @@ interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
-const SearchBar: React.FunctionComponent<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
   const [query, setQuery] = useState<string>("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
-    onSearch(query);
+    onSearch(event.target.value);
   };
 
   // const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {

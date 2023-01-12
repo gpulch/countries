@@ -1,20 +1,25 @@
 import React from "react";
+import Link from "next/link";
 import { BodyComponentProps } from "./BodyComponent";
 import { ICountry } from "../";
 import CountryComponent from "./CountryComponent";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 interface TuilesPaysProps {
-    countries: ICountry[];
+  countries: ICountry[];
 }
 
 function TuilesPays({ countries }: TuilesPaysProps) {
-console.log(countries)
+  console.log(countries);
   return (
-    // <div>Toto</div>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {countries.map((country:ICountry) => (
-        <CountryComponent key={country.name.common} country={country} />
+      {countries.map((country: ICountry) => (
+        <Link href={{
+          pathname: '/[name]',
+          query: { name: country.name.common },
+        }}>
+          <CountryComponent key={country.name.common} country={country} />
+        </Link>
       ))}
     </div>
   );

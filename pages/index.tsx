@@ -38,9 +38,26 @@ export interface ICountry {
   borders: string[];
 }
 
+// export const getServerSideProps = async () => {
+//   const res = await fetch("https://restcountries.com/v3.1/all");
+//   const data = await res.json();
+//   const fixedPopulation = data.map((country: ICountry) => {
+//     country.population = country.population
+//       .toString()
+//       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//   });
+//   return {
+//     props: {
+//       countries: data,
+//     },
+//   };
+// };
+
 export default function Home() {
   // fetching data from the api
   const [countries, setCountries] = useState<ICountry[]>([]);
+  const [filteredCountries, setFilteredCountries] = useState<ICountry[]>([]);
+  const [selectedRegion, setSelectedRegion] = useState<string>("");
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
@@ -56,12 +73,35 @@ export default function Home() {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    setFilteredCountries(countries);
+  }, [countries]);
+
+  useEffect(() => {
+    setFilteredCountries(
+      countries.filter((country) => country.region === selectedRegion)
+    );
+  }, [selectedRegion]);
+
+  const getRegions = (countries: ICountry[]) => {
+    const regionsSet = new Set<string>();
+    for (const country of countries) {
+      regionsSet.add(country.region);
+    }
+    return Array.from(regionsSet);
+  };
+
+  const [regions, setRegions] = useState<string[]>([]);
+  useEffect(() => {
+    setRegions(getRegions(countries));
+  }, [countries]);
+
   const onSearch = (query: string) => {
     const queryLowerCase = query.toLowerCase();
     const result = countries.filter((element) =>
       element.name.common.toLowerCase().includes(queryLowerCase)
     );
-    setCountries(result);
+    setFilteredCountries(result);
   };
 
   return (
@@ -72,7 +112,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <BodyComponent countries={countries} onSearch={onSearch} />
+      <BodyComponent
+        countries={filteredCountries}
+        onSearch={onSearch}
+        regions={regions}
+        selectedRegion={selectedRegion}
+        setSelectedRegion={setSelectedRegion}
+      />
     </>
   );
 }
